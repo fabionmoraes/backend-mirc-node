@@ -1,14 +1,13 @@
-import { CreateChannelController } from '@modules/channels/controllers/CreateChannelController'
 import { Router } from 'express'
-import { ensureAuthenticated } from './middleware/ensureAuthenticated'
-import { AuthenticateUserController } from './modules/users/controllers/AuthenticateUserController'
-import { ProfileUserController } from './modules/users/controllers/ProfileUserController'
 
-const router = Router()
+import { usersRouter } from '@modules/users/users.routes'
+import { authRoutes } from '@modules/Auth/auth.routes'
+import { channelsRouter } from '@modules/channels/channels.routes'
 
-router.get('/profile', ensureAuthenticated, new ProfileUserController().handle)
-router.post('/login', new AuthenticateUserController().handle)
+const routes = Router()
 
-router.post('/channels', ensureAuthenticated, new CreateChannelController().handle)
+routes.use('/login', authRoutes)
+routes.use('/profile', usersRouter)
+routes.use('/channels', channelsRouter)
 
-export { router }
+export { routes }

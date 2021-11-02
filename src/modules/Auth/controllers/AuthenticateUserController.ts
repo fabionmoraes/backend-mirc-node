@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { AuthenticateUserService } from '../services/AuthenticateUserService'
-import { FindFirstUserByEmailService } from '../services/FindFirstUserByEmailService'
+import { FindFirstUserByEmailService } from '@modules/users/services/FindFirstUserByEmailService'
 
 export class AuthenticateUserController {
     async handle(request: Request, response: Response) {

@@ -4,12 +4,13 @@
     "module": "commonjs",                                
     "esModuleInterop": true,                            
     "forceConsistentCasingInFileNames": true,            
-    "strict": false,                                      
+    "strict": false,
+    "allowJs": true,                               
     "skipLibCheck": true,
     "sourceMap": true,
     "typeRoots": ["./src/@types", "node_modules/@types"],
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "baseUrl": "./src",
     "experimentalDecorators": true,
     "paths": {
@@ -17,5 +18,8 @@
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"]
     },                         
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
 }

@@ -1,12 +1,6 @@
-import { IsNotEmpty } from 'class-validator'
-
-export class ICreateChannelDTO {
-    @IsNotEmpty()
+export interface ICreateChannelDTO {
     name: string
-
-    @IsNotEmpty()
+    description?: string
     slug: string
-
-    @IsNotEmpty()
     user_id: string
 }

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import { jwtConfig } from '@config/jwt';
-import { IUserDTO } from '../dto/IUserDTO';
+import { IUserDTO } from '@modules/users/dto/IUserDTO';
 
 export class AuthenticateUserService {
     async execute(user: IUserDTO, password: string) {

@@ -1,7 +1,8 @@
 import prismaClient from 'prisma'
+import { AppError } from '@config/AppError'
 
 export class VerifyIfExistsChannelSlug {
-    async execute(slug: string) {
+    async execute(slug: string): Promise<void> {
         const channel = await prismaClient.channel.findFirst({
             where: {
                 slug
@@ -9,7 +10,7 @@ export class VerifyIfExistsChannelSlug {
         })
 
         if (channel) {
-            throw new Error('Ops! Esse canal já existe.')
+            throw new AppError('Ops! Esse canal já existe.')
         }
     }
 }
