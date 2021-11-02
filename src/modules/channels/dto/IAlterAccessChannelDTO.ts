@@ -1,4 +1,4 @@
 export interface IAlterAccessChannelDTO {
     access: boolean
-    slug: string
+    id: string
 }

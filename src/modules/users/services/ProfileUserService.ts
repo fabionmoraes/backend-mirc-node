@@ -4,12 +4,16 @@ export class ProfileUserService {
     async execute(user_id: string) {
         const user = await prismaClient.user.findFirst({
             where: {
-                id: user_id
+                id: user_id,
             }
         })
 
-        delete user.password
+        if (!user) {
+          return {}
+        }
 
-        return user
+        const { password, ...result } = user
+
+        return result
     }
 }

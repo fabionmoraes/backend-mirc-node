@@ -1,18 +1,23 @@
 import { sign } from 'jsonwebtoken'
-import { IUserDTO } from '../modules/users/dto/IUserDTO'
 
-export const jwtConfig = (user: IUserDTO) => {
+interface IJwtConfig {
+  name: string
+  avatar: any
+  id: string
+}
+
+export const jwtConfig = ({ name, avatar, id }: IJwtConfig) => {
     const token = sign(
         {
             user: {
-                name: user.name,
-                avatar_url: user.avatar_url,
-                id: user.id
+                name: name,
+                avatar_url: avatar,
+                id
             }
         },
-        process.env.JWT_SECRET,
+        String(process.env.JWT_SECRET),
         {
-            subject: user.id,
+            subject: id,
             expiresIn: "1d"
         }
     )
