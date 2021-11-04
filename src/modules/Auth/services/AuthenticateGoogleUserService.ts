@@ -1,8 +1,8 @@
 import { decode } from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 
+import { UserEntity } from '@modules/users/entities/UserEntity'
 import { jwtConfig } from '@config/jwt';
-import prismaClient from 'prisma'
 import { slug } from '@shared/utils';
 
 interface IGoogleOATH {
@@ -18,7 +18,9 @@ export class AuthenticateGoogleUserService {
     async execute(token_google: string) {
         const { sub, email, name, picture, family_name } = decode(token_google) as IGoogleOATH
 
-        let user = await prismaClient.user.findFirst({
+        const userEntity = UserEntity()
+
+        let user = await userEntity.findFirst({
             where: {
                 google_id: sub,
             }
@@ -28,7 +30,7 @@ export class AuthenticateGoogleUserService {
           const salt = await bcrypt.genSalt();
           const password = await bcrypt.hash(`${sub}${family_name}`, salt)
 
-            user = await prismaClient.user.create({
+            user = await userEntity.create({
               data: {
                 username: `${slug(name)}${sub}`,
                 email,

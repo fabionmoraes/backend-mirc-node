@@ -1,9 +1,10 @@
-import prismaClient from 'prisma'
+import { ChannelEntity } from '../entities/ChannelEntity'
 import { AppError } from '@config/AppError'
 
 export class VerifyIfExistsChannelSlugService {
     async execute(slug: string): Promise<void> {
-        const channel = await prismaClient.channel.findFirst({
+      const channelEntity = ChannelEntity()
+        const channel = await channelEntity.findFirst({
             where: {
               slug
             }

@@ -1,8 +1,9 @@
-import prismaClient from 'prisma'
+import { UserEntity } from '../entities/UserEntity'
 
 export class FindFirstUserByEmailService {
     async execute(email: string) {
-        const user = await prismaClient.user.findFirst({
+      const userEntity = UserEntity()
+        const user = await userEntity.findFirst({
             where: {
                 email
             }

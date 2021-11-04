@@ -1,12 +1,14 @@
 import bcrypt from 'bcrypt'
-import prismaClient from 'prisma'
+import { UserEntity } from '@modules/users/entities/UserEntity'
 
 import { jwtConfig } from '@config/jwt';
 import { AppError } from '@config/AppError';
 
 export class AuthenticateUserService {
     async execute(username: string, password: string) {
-        const user = await prismaClient.user.findFirst({
+      const userEntity = UserEntity()
+
+        const user = await userEntity.findFirst({
             where: {
                 username,
             }

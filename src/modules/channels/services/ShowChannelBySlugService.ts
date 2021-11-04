@@ -1,8 +1,9 @@
-import prismaClient from 'prisma'
+import { ChannelEntity } from '../entities/ChannelEntity'
 
 export class ShowChannelBySlugService {
   async execute(slug: string) {
-    const channel = await prismaClient.channel.findFirst({
+    const channelEntity = ChannelEntity()
+    const channel = await channelEntity.findFirst({
       where: {
         slug
       }

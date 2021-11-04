@@ -1,8 +1,9 @@
-import prismaClient from 'prisma'
+import { ChannelEntity } from '../entities/ChannelEntity'
 
 export class ListChannelsService {
   async execute() {
-    const channels = await prismaClient.channel.findMany()
+    const channelEntity = ChannelEntity()
+    const channels = await channelEntity.findMany()
 
     return channels
   }

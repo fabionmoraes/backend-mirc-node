@@ -1,9 +1,9 @@
-import prismaClient from 'prisma'
+import { ChannelConnectEntity } from '../entities/ChannelConnectEntity'
 
 export class CreateChannelConnectedService {
   async execute(user_id: string, channel_id: string) {
-
-    const channelConnect = await prismaClient.channelConnect.create({
+    const channelConnectEntity = ChannelConnectEntity()
+    const channelConnect = await channelConnectEntity.create({
       data: {
         user_id,
         channel_id

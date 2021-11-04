@@ -1,11 +1,12 @@
-import prismaClient from 'prisma'
+import { ChannelEntity } from '../entities/ChannelEntity'
 import { IAlterAccessChannelDTO } from '../dto/IAlterAccessChannelDTO';
 
 export class AlterAccessChannelService {
     async execute(data: IAlterAccessChannelDTO) {
+      const channelEntity = ChannelEntity()
         const { id, access } = data
 
-        const channel = await prismaClient.channel.update({
+        const channel = await channelEntity.update({
             data: {
                 access
             },

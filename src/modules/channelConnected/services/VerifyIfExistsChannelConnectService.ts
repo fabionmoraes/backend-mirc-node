@@ -1,9 +1,10 @@
 import { AppError } from '@config/AppError'
-import prismaClient from 'prisma'
+import { ChannelConnectEntity } from '../entities/ChannelConnectEntity'
 
 export class VerifyIfExistsChannelConnectService {
   async execute(channel_id: string) {
-    const channel = await prismaClient.channelConnect.findFirst({
+    const channelConnectEntity = ChannelConnectEntity()
+    const channel = await channelConnectEntity.findFirst({
       where: {
         id: channel_id
       }

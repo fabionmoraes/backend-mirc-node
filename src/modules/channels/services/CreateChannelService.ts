@@ -1,9 +1,10 @@
-import prismaClient from 'prisma'
+import { ChannelEntity } from '../entities/ChannelEntity'
 import { ICreateChannelDTO } from '../dto/ICreateChannelDTO';
 
 export class CreateChannelService {
     async execute(createChannelDto: ICreateChannelDTO) {
-        const channel = await prismaClient.channel.create({
+      const channelEntity = ChannelEntity()
+        const channel = await channelEntity.create({
             data: createChannelDto,
             include: {
                 user: true
