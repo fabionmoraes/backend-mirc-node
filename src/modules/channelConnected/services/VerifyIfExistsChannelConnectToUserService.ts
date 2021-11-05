@@ -1,17 +1,18 @@
 import { AppError } from '@config/AppError'
 import { ChannelConnectEntity } from '../entities/ChannelConnectEntity'
 
-export class VerifyIfExistsChannelConnectService {
-  async execute(channel_id: string) {
+export class VerifyIfExistsChannelConnectToUserService {
+  async execute(channel_id: string, user_id: string) {
     const channelConnectEntity = ChannelConnectEntity()
     const channel = await channelConnectEntity.findFirst({
       where: {
-        id: channel_id
+        channel_id,
+        user_id
       }
     })
 
-    if (!channel) {
-      throw new AppError('Ops! Não existe esse canal para se connectar')
+    if (channel) {
+      throw new AppError('Ops! Você já está conectado', 403)
     }
   }
 }
