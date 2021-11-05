@@ -25,6 +25,7 @@ model User {
   updatedAt         DateTime @updatedAt
   channels          Channel[]
   channel_connected ChannelConnect[]
+  messages          Message[]
 
   @@map("users")
 }
@@ -43,6 +44,7 @@ model Channel {
 
   user_id   String
   channel_connected ChannelConnect[]
+  messages Message[]
   @@map("channels")
 }
 
@@ -57,4 +59,19 @@ model ChannelConnect {
   channel_id    String
 
   @@map("channel_connected")
+}
+
+model Message {
+  id          Int @id @default(autoincrement())
+  messages    String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  channel     Channel @relation(fields: [channel_id], references: [id])
+  channel_id  String
+
+  user        User @relation(fields: [user_id], references: [id])
+  user_id     String
+  @@map("messages")
 }
