@@ -7,6 +7,8 @@ export class ListChannelsController {
 
     const result = await listChannelsService.execute()
 
-    response.json(result)
+    response.json({
+      data: result
+    })
   }
 }

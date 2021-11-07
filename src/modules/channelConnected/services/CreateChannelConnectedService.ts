@@ -1,4 +1,4 @@
-import { ChannelConnectEntity } from '../entities/ChannelConnectEntity'
+import { ChannelConnectEntity } from '../ChannelConnectEntity'
 
 export class CreateChannelConnectedService {
   async execute(user_id: string, channel_id: string) {

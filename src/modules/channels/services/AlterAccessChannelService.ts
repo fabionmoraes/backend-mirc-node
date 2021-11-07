@@ -1,4 +1,4 @@
-import { ChannelEntity } from '../entities/ChannelEntity'
+import { ChannelEntity } from '../ChannelEntity'
 import { IAlterAccessChannelDTO } from '../dto/IAlterAccessChannelDTO';
 
 export class AlterAccessChannelService {

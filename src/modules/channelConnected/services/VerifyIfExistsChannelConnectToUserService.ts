@@ -1,5 +1,5 @@
 import { AppError } from '@config/AppError'
-import { ChannelConnectEntity } from '../entities/ChannelConnectEntity'
+import { ChannelConnectEntity } from '../ChannelConnectEntity'
 
 export class VerifyIfExistsChannelConnectToUserService {
   async execute(channel_id: string, user_id: string) {

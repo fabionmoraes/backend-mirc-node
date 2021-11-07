@@ -26,6 +26,7 @@ model User {
   channels          Channel[]
   channel_connected ChannelConnect[]
   messages          Message[]
+  channel_user_permissions  ChannelUserPermission[]
 
   @@map("users")
 }
@@ -45,6 +46,7 @@ model Channel {
   user_id   String
   channel_connected ChannelConnect[]
   messages Message[]
+  permissions ChannelPermission[]
   @@map("channels")
 }
 
@@ -74,4 +76,31 @@ model Message {
   user        User @relation(fields: [user_id], references: [id])
   user_id     String
   @@map("messages")
+}
+
+model ChannelPermission {
+  id            Int @id @default(autoincrement())
+  permissions   String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  channel       Channel @relation(fields: [channel_id], references: [id])
+  channel_id    String
+
+  channel_user_permissions ChannelUserPermission[]
+  @@map("channel_permissions")
+}
+
+model ChannelUserPermission {
+  id                    Int @id @default(autoincrement())
+  permissions           String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  channel_permission    ChannelPermission @relation(fields: [channel_permission_id], references: [id])
+  channel_permission_id Int
+
+  user                  User @relation(fields: [user_id], references: [id])
+  user_id               String
+  @@map("user_permissions")
 }

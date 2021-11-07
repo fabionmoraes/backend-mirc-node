@@ -1,4 +1,4 @@
-import { UserEntity } from '../entities/UserEntity'
+import { UserEntity } from '../UserEntity'
 
 export class FindFirstUserByEmailService {
     async execute(email: string) {

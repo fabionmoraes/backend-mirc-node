@@ -1,6 +1,6 @@
-import { MessageEntity } from '../entities/MessageEntity'
+import { MessageEntity } from '../MessageEntity'
 import { ICreateMessageDTO } from '../dto/ICreateMessageDTO'
-import { io } from '../../../app'
+import { io } from 'app'
 
 export class CreateMessagesService {
   async execute(createMessage: ICreateMessageDTO) {

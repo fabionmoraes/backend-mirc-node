@@ -9,6 +9,8 @@ export class MyAssocieteChannelConnectController {
 
     const mychannelconnect = await myAssocieteChannelConnectService.execute(user_id)
 
-    return response.json(mychannelconnect)
+    return response.json({
+      data: mychannelconnect
+    })
   }
 }

@@ -1,4 +1,4 @@
-import { ChannelEntity } from '../entities/ChannelEntity'
+import { ChannelEntity } from '../ChannelEntity'
 
 export class ShowChannelBySlugService {
   async execute(slug: string) {

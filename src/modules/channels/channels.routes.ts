@@ -6,15 +6,15 @@ import { CreateChannelController } from './controllers/CreateChannelController'
 import { AlterAccessChannelController } from './controllers/AlterAccessChannelController'
 import { ListChannelsController } from './controllers/ListChannelsController'
 import { ShowChannelBySlugController } from './controllers/ShowChannelBySlugController'
-import { MyChannelController } from './controllers/MyChannelController'
+import { MyChannelsController } from './controllers/MyChannelsController'
 
 const channelsRouter = Router()
 
 channelsRouter.use(ensureAuthenticated)
 
 channelsRouter.get('/', new ListChannelsController().handle)
-channelsRouter.get('/:id', new ShowChannelBySlugController().handle)
-channelsRouter.get('/my', new MyChannelController().handle)
+channelsRouter.get('/my', new MyChannelsController().handle)
+channelsRouter.get('/slug/:slug', new ShowChannelBySlugController().handle)
 
 channelsRouter.post('/', celebrate({
     [Segments.BODY]: {

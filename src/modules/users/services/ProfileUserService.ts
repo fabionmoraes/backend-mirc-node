@@ -1,5 +1,5 @@
 import prismaClient from 'prisma'
-import { UserEntity } from '../entities/UserEntity'
+import { UserEntity } from '../UserEntity'
 
 export class ProfileUserService {
     async execute(user_id: string) {

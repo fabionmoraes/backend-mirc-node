@@ -1,4 +1,4 @@
-import { ChannelEntity } from '../entities/ChannelEntity'
+import { ChannelEntity } from '../ChannelEntity'
 import { ICreateChannelDTO } from '../dto/ICreateChannelDTO';
 
 export class CreateChannelService {

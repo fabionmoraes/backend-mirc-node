@@ -1,4 +1,4 @@
-import { ChannelEntity } from '../entities/ChannelEntity'
+import { ChannelEntity } from '../ChannelEntity'
 import { AppError } from '@config/AppError'
 
 export class VerifyIfExistsChannelByIdAndUserIdService {

@@ -18,7 +18,7 @@ export const jwtConfig = ({ name, avatar, id }: IJwtConfig) => {
         String(process.env.JWT_SECRET),
         {
             subject: id,
-            expiresIn: "1d"
+            expiresIn: "6d"
         }
     )
 

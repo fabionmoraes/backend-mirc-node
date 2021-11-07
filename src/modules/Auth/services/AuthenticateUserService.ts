@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { UserEntity } from '@modules/users/entities/UserEntity'
+import { UserEntity } from '@modules/users/UserEntity'
 
 import { jwtConfig } from '@config/jwt';
 import { AppError } from '@config/AppError';
