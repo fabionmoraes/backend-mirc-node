@@ -19,11 +19,6 @@ export class CreateChannelPermissionsService {
       }
     })
 
-    if (channelPermission) {
-      const permissions = channelPermission.permissions
-      channelPermission.permissions = permissions ? JSON.parse(permissions) : []
-    }
-
     return channelPermission
   }
 }

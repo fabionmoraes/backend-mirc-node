@@ -5,7 +5,6 @@ import { CreateChannelService } from '../services/CreateChannelService'
 import { VerifyIfExistsChannelSlugService } from '../services/VerifyIfExistsChannelSlugService'
 import { CreateChannelConnectedService } from '@modules/channelConnected/services/CreateChannelConnectedService'
 import { CreateChannelPermissionsService } from '@modules/channelPermissions/services/CreateChannelPermissionsService'
-import { CreateChannelUserPermissionsService } from '@modules/channelUserPermissions/services/CreateChannelUserPermissionsService'
 
 export class CreateChannelController {
     async handle(request: Request, response: Response) {
@@ -17,7 +16,6 @@ export class CreateChannelController {
         const createChannelPermissionsService = new CreateChannelPermissionsService()
         const verifyIfExistsChannelSlugService = new VerifyIfExistsChannelSlugService()
         const createChannelConnectService = new CreateChannelConnectedService()
-        const createChannelUserPermissionsService = new CreateChannelUserPermissionsService()
 
         await verifyIfExistsChannelSlugService.execute(slug)
 
@@ -25,11 +23,6 @@ export class CreateChannelController {
         const permissionsChannel = await createChannelPermissionsService.execute({
           permissions,
           channel_id: result.id
-        })
-        await createChannelUserPermissionsService.execute({
-          user_id,
-          channel_permission_id: permissionsChannel.id,
-          permissions
         })
         await createChannelConnectService.execute({
           user_id,
