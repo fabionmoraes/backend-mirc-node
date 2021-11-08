@@ -20,6 +20,10 @@ channelsRouter.post('/', celebrate({
     [Segments.BODY]: {
         name: Joi.string().required(),
         description: Joi.string(),
+        permissions: Joi.object().required().keys({
+          message: Joi.boolean().required(),
+          view: Joi.boolean().required(),
+        }),
     }
 }), new CreateChannelController().handle)
 

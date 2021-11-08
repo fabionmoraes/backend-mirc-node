@@ -15,7 +15,11 @@ export class CreateChannelConnectedController {
 
     await verifyIfExistsChannelByIdService.execute(channel_id)
     await verifyIfExistsChannelConnectToUserService.execute(channel_id, user_id)
-    const result = await createChannelConnectedService.execute(user_id, channel_id)
+    const result = await createChannelConnectedService.execute({
+      user_id,
+      channel_id,
+      level: 'user'
+    })
 
     return response.status(201).json(result)
   }

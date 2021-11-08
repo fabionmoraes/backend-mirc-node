@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -52,6 +52,7 @@ model Channel {
 
 model ChannelConnect {
   id            String @id @default(uuid())
+  level         Level @default(user)
   createdAt     DateTime @default(now())
 
   user          User @relation(fields: [user_id], references: [id])
@@ -103,4 +104,10 @@ model ChannelUserPermission {
   user                  User @relation(fields: [user_id], references: [id])
   user_id               String
   @@map("user_permissions")
+}
+
+enum Level {
+    user
+    voice
+    op
 }

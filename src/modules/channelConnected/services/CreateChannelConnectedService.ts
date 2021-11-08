@@ -1,13 +1,11 @@
 import { ChannelConnectEntity } from '../ChannelConnectEntity'
+import { ICreateChannelConnectedDTO } from '../dto/ICreateChannelConnectedDTO'
 
 export class CreateChannelConnectedService {
-  async execute(user_id: string, channel_id: string) {
+  async execute(createChannelConnected: ICreateChannelConnectedDTO) {
     const channelConnectEntity = ChannelConnectEntity()
     const channelConnect = await channelConnectEntity.create({
-      data: {
-        user_id,
-        channel_id
-      }
+      data: createChannelConnected
     })
 
     return channelConnect
