@@ -24,6 +24,10 @@ const io = new Server(serverHttp, {
 
 io.on("connection", (socket) => {
     console.log(`Usuário conectado no socket ${socket.id}`);
+    app.use((request: Request, response: Response) => {
+      const { user_id } = request
+      io.emit('connected-user', { user_id, socket_id: socket.id })
+    })
 });
 
 app.use(express.json());

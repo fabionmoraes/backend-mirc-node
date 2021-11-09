@@ -5,6 +5,7 @@ import { authRoutes } from '@modules/Auth/auth.routes'
 import { channelsRouter } from '@modules/channels/channels.routes'
 import { channelConnectedRoutes } from '@modules/channelConnected/channel_connected.routes'
 import { messagesRoutes } from '@modules/messages/messages.routes'
+import { publicRoutes } from '@modules/public/public.routes'
 
 const routes = Router()
 
@@ -13,5 +14,6 @@ routes.use('/profile', usersRouter)
 routes.use('/channels', channelsRouter)
 routes.use('/channel_connected', channelConnectedRoutes)
 routes.use('/messages', messagesRoutes)
+routes.use('/public', publicRoutes)
 
 export { routes }
