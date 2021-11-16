@@ -24,11 +24,11 @@ const io = new Server(serverHttp, {
 
 io.on("connection", (socket) => {
     console.log(`Usuário conectado no socket ${socket.id}`);
-    app.use((request: Request, response: Response) => {
-      const { user_id } = request
-      io.emit('connected-user', { user_id, socket_id: socket.id })
-    })
+    socket.on("disconnect", () => {
+      console.log(`Usuário desconectou no socket ${socket.id}`);
+    });
 });
+
 
 app.use(express.json());
 app.use(routes);
